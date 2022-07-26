@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,6 +47,14 @@ class MainActivity : AppCompatActivity(), userAdapter.ClickListener {
         userList.add(userModel("Rajkumar"))
         userList.add(userModel("Jatin"))
         userList.add(userModel("Thomas"))
+        userList.add(userModel("Pavankumar1"))
+        userList.add(userModel("Djamal1"))
+        userList.add(userModel("Anshul1"))
+        userList.add(userModel("Fashan1"))
+        userList.add(userModel("Thoshith1"))
+        userList.add(userModel("Rajkumar1"))
+        userList.add(userModel("Jatin1"))
+        userList.add(userModel("Thomas1"))
 
         return userList;
     }
@@ -69,7 +77,9 @@ class MainActivity : AppCompatActivity(), userAdapter.ClickListener {
                 return true
             }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                userAdapter.filter.filter(newText)
                 return true
             }
 
