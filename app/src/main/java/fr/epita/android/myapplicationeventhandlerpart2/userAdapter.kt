@@ -83,8 +83,8 @@ class userAdapter(clickListener: ClickListener): RecyclerView.Adapter<userAdapte
                         }
                     }
 
-                    filterResults.values = filterResults
-                    filterResults.count = filterResults.size
+//                    filterResults.values = filterResults
+//                    filterResults.count = filterResults.size
 
                 }
 
