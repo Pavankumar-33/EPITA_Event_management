@@ -47,14 +47,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun bindActivity() {
-        //configure ActionBar
-        actionBar = supportActionBar!!
-        actionBar.title = "Sign Up"
-
 
         //Enable back button
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setDisplayShowHomeEnabled(true)
+//        actionBar.setDisplayHomeAsUpEnabled(true)
+//        actionBar.setDisplayShowHomeEnabled(true)
 
         //Configure progress dialog
         progressDialog = ProgressDialog(this)
@@ -69,6 +65,11 @@ class SignUpActivity : AppCompatActivity() {
         binding.activitySignupBtnSignUp.setOnClickListener {
             //validate data
             validateData()
+        }
+
+        binding.activitySignupTvLogin.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
