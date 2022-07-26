@@ -74,6 +74,7 @@ class EventDetail : AppCompatActivity() {
     private lateinit var eventDetailEventNameSend: String
     private lateinit var btnGenerateQr: Button
     private lateinit var ivQr: ImageView
+    private lateinit var tvQrInformation: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,12 +95,22 @@ class EventDetail : AppCompatActivity() {
 
 
         bindActivity()
+
         if (isAdmin == "true") {
             btnEditEvent.visibility = View.VISIBLE
         }
     }
 
     private fun bindActivity() {
+
+        //configure ActionBar
+        actionBar = supportActionBar!!
+        actionBar.title = "Event Detail"
+
+
+        //Enable back button
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
 
         tvEventName = findViewById(R.id.activity_event_detail_tv_name)
         tvEventOrganiser = findViewById(R.id.activity_event_detail_tv_organiser)
@@ -111,6 +122,7 @@ class EventDetail : AppCompatActivity() {
         btnEditEvent = findViewById(R.id.activity_event_detail_btn_edit_event)
         tvEventPreRegistration = findViewById(R.id.activity_event_detail_tv_pre_registration)
         btnGenerateQr = findViewById(R.id.activity_qr_code_generate_btn_create)
+        tvQrInformation = findViewById(R.id.activity_event_detail_tv_pre_registration_information)
         ivQr = findViewById(R.id.activity_event_detail_iv_qr_code)
 
 //        getEventData()
@@ -219,6 +231,7 @@ class EventDetail : AppCompatActivity() {
                 if (eventDetailSendPreRegistration == "Yes") {
 
                     btnGenerateQr.visibility = View.VISIBLE
+                    tvQrInformation.visibility = View.VISIBLE
 
                 }
 

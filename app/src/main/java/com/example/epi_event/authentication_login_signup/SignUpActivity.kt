@@ -47,8 +47,12 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun bindActivity() {
-
-        //Enable back button
+//        //configure ActionBar
+//        actionBar = supportActionBar!!
+//        actionBar.title = "Sign Up"
+//
+//
+//        //Enable back button
 //        actionBar.setDisplayHomeAsUpEnabled(true)
 //        actionBar.setDisplayShowHomeEnabled(true)
 

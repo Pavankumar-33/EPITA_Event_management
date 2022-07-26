@@ -19,29 +19,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1">
 
             <!--    For image-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="512dp"
-                android:background="@drawable/layout_bg">
+                android:layout_height="320dp"
+                android:background="@color/authentication_background">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/layout_bg">
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/activity_event_detail_iv_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerInside" />
                 </RelativeLayout>
@@ -53,9 +46,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="480dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="228dp"
+                android:layout_marginRight="28dp"
                 android:background="@drawable/layout_bg"
                 android:orientation="vertical">
 
@@ -81,7 +74,7 @@
                             android:layout_marginBottom="@dimen/item_margin"
                             android:text="Event Name"
                             android:textColor="@color/black"
-                            android:textSize="22dp"
+                            android:textSize="28dp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -95,10 +88,9 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
                             android:src="@mipmap/ic_event_detail_clock" />
-
 
                         <TextView
                             android:id="@+id/activity_event_detail_tv_date"
@@ -106,7 +98,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/item_margin"
                             android:text="Event Date"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -122,7 +115,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/item_margin"
                             android:text="Event Time"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
 
 
                     </LinearLayout>
@@ -136,8 +130,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
                             android:src="@mipmap/ic_event_detail_location_foreground" />
 
 
@@ -147,7 +141,45 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/item_margin"
                             android:text="Event Address"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/item_margin"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:src="@mipmap/ic_event_detail_intrested_foreground" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/item_margin"
+                            android:text="+"
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/activity_event_detail_tv_interested"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="130"
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:text="Interested"
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
 
@@ -174,7 +206,7 @@
                             android:layout_marginBottom="@dimen/item_margin"
                             android:text="Description"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -183,7 +215,8 @@
                             android:layout_height="wrap_content"
                             android:singleLine="false"
                             android:text="Event Description"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
 
@@ -200,7 +233,8 @@
                             android:layout_height="wrap_content"
                             android:text="Host"
                             android:textColor="@color/black"
-                            android:textSize="16dp" />
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/activity_event_detail_tv_organiser"
@@ -208,7 +242,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/item_margin"
                             android:hint="Organiser Name"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
 
@@ -218,23 +253,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/item_margin"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/item_margin"
-                            android:text="Event Type: "
+                            android:text="Event Type"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/activity_event_detail_tv_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/item_margin"
+                            android:singleLine="false"
                             android:text="Event Type"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
 
@@ -244,30 +282,44 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/item_margin"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/item_margin"
-                            android:text="Pre-Registration: "
+                            android:text="Pre-Registration"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/activity_event_detail_tv_pre_registration"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/item_margin"
                             android:text="Yes"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/activity_event_detail_tv_pre_registration_information"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/item_margin"
+                            android:text="Clicking on Pre-registration generates a QR code and save into gallery for authentication"
+                            android:textColor="@color/red"
+                            android:textSize="12dp"
+                            android:textStyle="italic"
+                            android:visibility="gone" />
 
                         <Button
                             android:id="@+id/activity_qr_code_generate_btn_create"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/item_margin"
-                            android:text="Generate"
+                            android:layout_marginTop="@dimen/layout_margin"
+                            android:text="Pre-register"
                             android:visibility="gone" />
 
                     </LinearLayout>
