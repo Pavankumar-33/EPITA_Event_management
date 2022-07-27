@@ -72,6 +72,7 @@ class EventDetail : AppCompatActivity() {
     private lateinit var btnGenerateQr: Button
     private lateinit var ivQr: ImageView
     private lateinit var tvQrInformation: TextView
+    private lateinit var tvInterestedNumber: TextView
     private var flag = false
 
     //store value of userkey from database
@@ -120,6 +121,11 @@ class EventDetail : AppCompatActivity() {
                     interestKeyArray.add(childSnapshot.key.toString())
                 }
                 Log.d("childNameGetArray", interestKeyArray.toString())
+
+                //Put data in count textview
+
+                tvInterestedNumber.setText(interestKeyArray.size.toString())
+
 
                 //Check if interested is already selected
 
@@ -172,6 +178,7 @@ class EventDetail : AppCompatActivity() {
         tvQrInformation = findViewById(R.id.activity_event_detail_tv_pre_registration_information)
         ivQr = findViewById(R.id.activity_event_detail_iv_qr_code)
         ivStar = findViewById(R.id.activity_event_detail_iv_star)
+        tvInterestedNumber = findViewById(R.id.activity_event_detail_tv_interested)
 
 //        getEventData()
         randomString = getRandomString(21)
@@ -203,10 +210,18 @@ class EventDetail : AppCompatActivity() {
                 ivStar.setImageResource(R.mipmap.ic_star_glow_foreground);
                 ivStar.setTag("notinterested");
                 sendInterestData()
+//                finish();
+//                overridePendingTransition( 0, 0);
+//                startActivity(getIntent());
+//                overridePendingTransition( 0, 0);
             } else {
                 ivStar.setImageResource(R.mipmap.ic_star_not_glow_foreground);
                 ivStar.setTag("interested")
                 deleteInterestData()
+//                finish();
+//                overridePendingTransition( 0, 0);
+//                startActivity(getIntent());
+//                overridePendingTransition( 0, 0);
             }
         }
 
@@ -244,10 +259,9 @@ class EventDetail : AppCompatActivity() {
 
     private fun sendInterestData() {
 
-
         var eventNameInterested: String = tvEventName.text.toString()
         var currentUserId: String =
-            FirebaseAuth.getInstance().currentUser!!.uid.toString();
+            FirebaseAuth.getInstance().currentUser!!.uid
 
         databaseReference =
             FirebaseDatabase.getInstance("https://epita-event-signup-default-rtdb.europe-west1.firebasedatabase.app/")
