@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity(), userAdapter.ClickListener {
         menuInflater.inflate(R.menu.search_menu, menu)
         var menuItem = menu!!.findItem(R.id.search_view)
         var searchView: SearchView = menuItem.actionView as SearchView
+        searchView.maxWidth = Int.MAX_VALUE
 
         searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {

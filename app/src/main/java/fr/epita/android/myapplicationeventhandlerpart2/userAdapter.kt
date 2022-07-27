@@ -1,6 +1,7 @@
 package fr.epita.android.myapplicationeventhandlerpart2
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,16 +76,16 @@ class userAdapter(clickListener: ClickListener): RecyclerView.Adapter<userAdapte
                 else{
                     var searchChar = p0.toString().toLowerCase();
 
-                    var filterResults = ArrayList<userModel>()
+                    var filteredResult = ArrayList<userModel>()
 
                     for (um in userModelListFiltered){
                         if (um.username.toLowerCase().contains(searchChar)){
-                            filterResults.add(um)
+                            filteredResult.add(um)
                         }
                     }
 
-//                    filterResults.values = filterResults
-//                    filterResults.count = filterResults.size
+                    filterResults.values = filteredResult
+                    filterResults.count = filteredResult.size
 
                 }
 
