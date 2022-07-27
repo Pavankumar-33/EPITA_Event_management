@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:override="true"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_admin_profile"
+            android:icon="@mipmap/ic_profile_foreground"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_admin_add_event"
+            android:layout_height="match_parent"
+            android:icon="@mipmap/ic_create_event_foreground"
+            android:title="Create Event" />
+
+        <item
+            android:id="@+id/nav_admin_qr_code_scanner"
+            android:layout_height="match_parent"
+            android:icon="@mipmap/ic_qr_code_scanner_foreground"
+            android:title="QR Code Scanner" />
+
+        <item
+            android:id="@+id/nav_admin_change_password"
+            android:layout_height="match_parent"
+            android:icon="@mipmap/ic_chane_password_foreground"
+            android:title="Change Password" />
+
+        <item
+            android:id="@+id/nav_admin_sign_out"
+            android:icon="@mipmap/ic_sign_out_foreground"
+            android:title="Sign Out" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_aboutus"
+                android:icon="@mipmap/ic_about_us"
+                android:title="About Us" />
+        </menu>
+    </item>
+</menu>
