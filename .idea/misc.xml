@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.18802083333333333" />
+        <entry key="app/src/main/res/drawable-v24/btn_pre_register.xml" value="0.186" />
         <entry key="app/src/main/res/drawable-v24/circle_authentication_design.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/circle_authentication_design_big.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/circle_authentication_design_bottom_big.xml" value="0.1395" />
@@ -14,6 +15,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/layout_bg_normal.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable-v24/layout_btn.xml" value="0.1395" />
+        <entry key="app/src/main/res/drawable-v24/layout_intrested.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/epita_image_logo_background.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/flash_button_background.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_calender_background.xml" value="0.1565" />
@@ -26,7 +28,7 @@
         <entry key="app/src/main/res/font/default_font.xml" value="0.2861111111111111" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.230987548828125" />
         <entry key="app/src/main/res/layout/activity_create_event.xml" value="0.15559082031250002" />
-        <entry key="app/src/main/res/layout/activity_event_detail.xml" value="0.32160797119140616" />
+        <entry key="app/src/main/res/layout/activity_event_detail.xml" value="0.3101104736328125" />
         <entry key="app/src/main/res/layout/activity_face_recognition.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17368469238281253" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.28229166666666666" />
@@ -41,9 +43,10 @@
         <entry key="app/src/main/res/layout/event_item.xml" value="0.3386625320780238" />
         <entry key="app/src/main/res/layout/fragment_qr_result.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.2635416666666667" />
         <entry key="app/src/main/res/menu/menu_login.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/menu/menu_sidebar.xml" value="0.30512820512820515" />
-        <entry key="app/src/main/res/menu/menu_sidebar_admin.xml" value="0.20104166666666667" />
+        <entry key="app/src/main/res/menu/menu_sidebar_admin.xml" value="0.5862162272135417" />
         <entry key="app/src/main/res/menu/menu_sidebar_user.xml" value="0.20625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/epita_image_logo.xml" value="0.186" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_calender.xml" value="0.1545" />

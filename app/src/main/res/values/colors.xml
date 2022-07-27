@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="grey">#6A6767</color>
+    <color name="blue">#0055FF</color>
+
     <color name="txtBackgroundDescription">#E7EDF7</color>
     <color name="epi_event_color_title">#6B11C5</color>
     <color name="epi_event_color_text">#000000</color>

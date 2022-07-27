@@ -76,6 +76,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         userEmail = intent.getStringExtra("userEmailPass").toString()
         Log.d("getEmail", userEmail)
 
+
         bindActivity()
 
 
@@ -118,6 +119,10 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         val toolbar: Toolbar = findViewById(R.id.app_bar_main_toolbar)
 //        setSupportActionBar(toolbar)
         navigationView = findViewById(R.id.nav_view)
+
+        //Put color on navigation menu
+        navigationView.setItemIconTintList(null);
+
         drawer = findViewById(R.id.drawer_layout)
 
         val toggle = ActionBarDrawerToggle(
@@ -274,6 +279,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         // Handle navigation view item clicks here.
         val id = item.itemId
+
 
         if (id == R.id.nav_user_profile) {
             //For user profile

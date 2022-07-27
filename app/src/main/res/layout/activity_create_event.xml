@@ -11,37 +11,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg"
+            android:orientation="vertical">
 
             <!--    For image-->
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="512dp"
-                android:background="@drawable/layout_bg">
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/layout_bg">
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/ic_gallery_foreground" />
 
                     <ImageView
                         android:id="@+id/activity_create_event_iv_image"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
+                        android:layout_height="210dp"
                         android:adjustViewBounds="true"
-                        android:scaleType="centerInside" />
+                        android:scaleType="fitXY" />
+
                 </RelativeLayout>
+
+
             </LinearLayout>
 
 
@@ -52,7 +60,6 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="480dp"
                 android:layout_marginRight="24dp"
                 android:background="@drawable/layout_bg"
                 android:orientation="vertical">
@@ -263,17 +270,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-                        <Switch
-                            android:id="@+id/activity_create_event_switch_pre_register"
-                            android:layout_width="250dp"
-                            android:layout_height="50dp"
-                            android:text="Allow Pre-Register "
-                            android:switchMinWidth="48dp"
-                            android:textColor="@color/black"
-                            android:thumbTint="@color/black"
-                            android:trackTint="@color/teal_700"
-                            >
-                        </Switch>
+
+                            <Switch
+                                android:id="@+id/activity_create_event_switch_pre_register"
+                                android:layout_width="250dp"
+                                android:layout_height="50dp"
+                                android:switchMinWidth="48dp"
+                                android:text="Allow Pre-Register "
+                                android:textColor="@color/black"
+                                android:thumbTint="@color/black"
+                                android:trackTint="@color/teal_700"></Switch>
+
                             <TextView
                                 android:id="@+id/activity_create_event_tv_pre_register"
                                 android:layout_width="wrap_content"
@@ -289,7 +296,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -305,6 +312,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_item_topic"
                 android:layout_weight="0.5"
+                android:background="@drawable/btn_pre_register"
                 android:text="Submit Event" />
 
 
