@@ -2,9 +2,9 @@ name: androidflow
 
 on:
   push:
-    branches: [ "ne/actions" ]
+    branches: [ "Feature-searchbar", "main" ]
   pull_request:
-    branches: [ "ne/actions" ]
+    branches: [ "Feature-searchbar", "main" ]
 
 jobs:
   build:
