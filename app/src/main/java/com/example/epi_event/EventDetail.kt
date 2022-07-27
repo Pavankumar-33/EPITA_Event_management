@@ -2,7 +2,6 @@ package com.example.epi_event
 
 import android.content.Intent
 import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -19,7 +18,6 @@ import com.example.epi_event.databinding.ActivityEventDetailBinding
 import com.example.epi_event.qr_code.QrCode
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -28,8 +26,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
-import java.sql.Date
-import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EventDetail : AppCompatActivity() {
@@ -75,6 +72,14 @@ class EventDetail : AppCompatActivity() {
     private lateinit var btnGenerateQr: Button
     private lateinit var ivQr: ImageView
     private lateinit var tvQrInformation: TextView
+    private var flag = false
+
+    //store value of userkey from database
+    private var interestKeyArray = LinkedList<String>()
+
+
+    //For interest image
+    private lateinit var ivStar: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,7 +99,49 @@ class EventDetail : AppCompatActivity() {
         Log.d("receivedUserName", "" + userEmail)
 
 
+
         bindActivity()
+
+        ivStar.setTag("notinterested");
+
+
+        var eventNameInterested: String = tvEventName.text.toString()
+        var currentUserId: String =
+            FirebaseAuth.getInstance().currentUser!!.uid
+        Log.d("eventNameData", EventNameClicked)
+
+        var databaseReference: DatabaseReference =
+            FirebaseDatabase.getInstance("https://epita-event-signup-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Interested/").child(EventNameClicked)
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Log.d("DataSnapshotNameGet", dataSnapshot.toString())
+                for (childSnapshot in dataSnapshot.children) {
+                    interestKeyArray.add(childSnapshot.key.toString())
+                }
+                Log.d("childNameGetArray", interestKeyArray.toString())
+
+                //Check if interested is already selected
+
+                if (interestKeyArray.contains(currentUserId)) {
+//                    flag = true
+//                    ivStar.setBackgroundResource(R.mipmap.ic_star_glow_foreground);
+//                    Thread.sleep(5000)
+                    ivStar.setImageResource(R.mipmap.ic_star_glow_foreground);
+                    ivStar.setTag("notinterested");
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+
+        })
+
+
+
 
         if (isAdmin == "true") {
             btnEditEvent.visibility = View.VISIBLE
@@ -124,6 +171,7 @@ class EventDetail : AppCompatActivity() {
         btnGenerateQr = findViewById(R.id.activity_qr_code_generate_btn_create)
         tvQrInformation = findViewById(R.id.activity_event_detail_tv_pre_registration_information)
         ivQr = findViewById(R.id.activity_event_detail_iv_qr_code)
+        ivStar = findViewById(R.id.activity_event_detail_iv_star)
 
 //        getEventData()
         randomString = getRandomString(21)
@@ -132,6 +180,36 @@ class EventDetail : AppCompatActivity() {
 
         getEventDetails()
         getImage()
+
+        ivStar.setOnClickListener {
+//            if (!flag) {
+//                Thread.sleep(1000)
+//
+//                ivStar.setBackgroundResource(R.mipmap.ic_star_glow_foreground);
+//                flag = true;
+//                sendInterestData()
+//                Thread.sleep(1000)
+//
+//            } else {
+//                Thread.sleep(1000)
+//
+//                ivStar.setBackgroundResource(R.mipmap.ic_star_not_glow_foreground);
+//                flag = false;
+//                deleteInterestData()
+//                Thread.sleep(1000)
+//
+//            }
+            if (ivStar.getTag().equals("interested")) {
+                ivStar.setImageResource(R.mipmap.ic_star_glow_foreground);
+                ivStar.setTag("notinterested");
+                sendInterestData()
+            } else {
+                ivStar.setImageResource(R.mipmap.ic_star_not_glow_foreground);
+                ivStar.setTag("interested")
+                deleteInterestData()
+            }
+        }
+
 
         btnEditEvent.setOnClickListener {
             val intent = Intent(this, CreateEventActivity::class.java)
@@ -149,6 +227,43 @@ class EventDetail : AppCompatActivity() {
 
             startActivity(intent)
         }
+    }
+
+    private fun deleteInterestData() {
+        var eventNameInterested: String = tvEventName.text.toString()
+        var currentUserId: String =
+            FirebaseAuth.getInstance().currentUser!!.uid.toString();
+
+        databaseReference =
+            FirebaseDatabase.getInstance("https://epita-event-signup-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Interested/").child(eventNameInterested)
+
+        databaseReference.child(currentUserId).removeValue()
+
+    }
+
+    private fun sendInterestData() {
+
+
+        var eventNameInterested: String = tvEventName.text.toString()
+        var currentUserId: String =
+            FirebaseAuth.getInstance().currentUser!!.uid.toString();
+
+        databaseReference =
+            FirebaseDatabase.getInstance("https://epita-event-signup-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("Interested").child(eventNameInterested)
+
+        databaseReference.child(currentUserId).setValue(currentUserId)
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this,
+                    "Getting interest failed because ${e.message}",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+
     }
 
     private fun getImage() {
@@ -183,7 +298,7 @@ class EventDetail : AppCompatActivity() {
         return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
     }
 
-
+    //Get information of events
     private fun getEventDetails() {
         databaseReference =
             FirebaseDatabase.getInstance("https://epita-event-signup-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -309,6 +424,7 @@ class EventDetail : AppCompatActivity() {
         })
     }
 
+    //For downloading QR image
     private fun downloadQR() {
 
         var fileOutputStream: FileOutputStream

@@ -380,6 +380,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/item_margin"
                             android:text="+"
                             android:textColor="@color/blue"
@@ -390,6 +391,7 @@
                             android:id="@+id/activity_event_detail_tv_interested"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="130"
                             android:textColor="@color/blue"
                             android:textSize="16dp"
@@ -398,11 +400,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginLeft="8dp"
                             android:text="Interested"
                             android:textColor="@color/blue"
                             android:textSize="16dp"
                             android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/activity_event_detail_iv_star"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:src="@mipmap/ic_star_not_glow_foreground" />
+
 
                     </LinearLayout>
 
