@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -36,6 +35,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     private lateinit var tvEmailResend: TextView
     private lateinit var tvEmail: TextView
     private lateinit var getUserEmail: String
+    private lateinit var displayUserName: TextView
 
     //Admin lists
     private var adminList: MutableList<String> = mutableListOf()
@@ -79,18 +79,16 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         bindActivity()
 
-
         //Check if user or admin
 
-        if (adminList.contains(userEmail)) {
-            navigationView.menu.clear()
-            navigationView.inflateMenu(R.menu.menu_sidebar_admin)
+            if (adminList.contains(userEmail)) {
+                navigationView.menu.clear()
+                navigationView.inflateMenu(R.menu.menu_sidebar_admin)
 
-        } else {
-            navigationView.menu.clear()
-            navigationView.inflateMenu(R.menu.menu_sidebar_user)
-        }
-
+            } else {
+                navigationView.menu.clear()
+                navigationView.inflateMenu(R.menu.menu_sidebar_user)
+            }
 
     }
 
@@ -114,6 +112,8 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         tvEmailVerification = findViewById(R.id.activity_profile_tv_email_not_verified)
         tvEmailResend = findViewById(R.id.activity_profile_tv_click_to_verify)
         tvEmail = findViewById(R.id.activity_profile_tv_email)
+//        displayUserName = findViewById(R.id.userNameDisplay)
+
 
 //Navigation view
         val toolbar: Toolbar = findViewById(R.id.app_bar_main_toolbar)
@@ -210,6 +210,8 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         })
     }
 
+    //Email verification
+
     private fun confirmEmailVerification() {
         val firebaseUserEmail = firebaseAuth.currentUser
 
@@ -275,6 +277,8 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
     }
 
+//    For navigation
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         // Handle navigation view item clicks here.
@@ -306,6 +310,8 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
+    //For signout
 
     private fun signout() {
         firebaseAuth.signOut()

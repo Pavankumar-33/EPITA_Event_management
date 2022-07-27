@@ -16,47 +16,91 @@
         android:layout_marginBottom="@dimen/item_margin"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/event_item_tv_event_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Event name"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_item_topic" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/event_item_tv_event_organiser"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event organiser"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_item_detail" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/item_margin"
-                android:layout_marginRight="@dimen/item_margin"
-                android:text="|"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_item_detail" />
+                <ImageView
+                    android:id="@+id/event_item_iv_image"
+                    android:layout_width="142dp"
+                    android:layout_height="98dp"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                android:id="@+id/event_item_tv_event_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event date"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_item_detail" />
+                <TextView
+                    android:id="@+id/event_item_tv_event_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Event name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_item_topic"
+                    android:textStyle="bold" />
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/event_item_tv_event_organiser"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Event organiser"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="@dimen/text_item_detail" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Registration: "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_item_detail" />
+
+                    <TextView
+
+                        android:id="@+id/event_item_tv_event_registration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Event registration"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_item_detail" />
+
+
+
+                </LinearLayout>
+
+                <TextView
+
+                    android:id="@+id/event_item_tv_event_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event date"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_item_detail" />
+
+                <TextView
+
+                    android:id="@+id/event_item_tv_event_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_item_detail" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
+
 
         <!--        <LinearLayout-->
         <!--            android:layout_width="match_parent"-->
