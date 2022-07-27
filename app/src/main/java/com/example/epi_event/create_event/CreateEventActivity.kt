@@ -10,10 +10,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.Switch
+import android.widget.Scroller
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -284,6 +284,7 @@ class CreateEventActivity : AppCompatActivity() {
     private fun getData() {
 
         //Get Data
+
 
         eventName = binding.activityCreateEventEtName.text.toString().trim()
         eventOrganiser = binding.activityCreateEventEtOrganiser.text.toString().trim()

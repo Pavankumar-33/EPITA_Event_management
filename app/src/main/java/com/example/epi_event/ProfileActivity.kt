@@ -96,7 +96,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         } else {
             navigationView.menu.clear()
-            navigationView.inflateMenu(R.menu.menu_sidebar_user)
+            navigationView.inflateMenu(R.menu.menu_sidebar_admin)
 //            menuInflater.inflate(R.menu.menu_sidebar_user, menu)
 
         }
