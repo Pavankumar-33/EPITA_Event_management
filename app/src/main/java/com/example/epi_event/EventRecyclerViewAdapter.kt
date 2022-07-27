@@ -14,10 +14,10 @@ import java.io.File
 
 
 class EventRecyclerViewAdapter(
-    val data: MutableList<EventObject>,
+    var data: MutableList<EventObject>,
     val context: Activity,
     val onItemClickListener: View.OnClickListener,
-) :
+    ) :
     RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -87,4 +87,5 @@ class EventRecyclerViewAdapter(
         return data.size
         Log.d("Size", "" + data.size)
     }
+
 }

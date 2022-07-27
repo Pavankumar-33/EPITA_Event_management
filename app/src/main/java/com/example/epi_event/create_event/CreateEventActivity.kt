@@ -1,10 +1,10 @@
 package com.example.epi_event.create_event
 
 import android.R
-import android.app.DatePickerDialog
-import android.app.ProgressDialog
-import android.app.TimePickerDialog
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -19,6 +19,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.example.epi_event.ProfileActivity
 import com.example.epi_event.databinding.ActivityCreateEventBinding
 import com.google.android.gms.tasks.OnFailureListener
@@ -44,6 +46,11 @@ class CreateEventActivity : AppCompatActivity() {
 
     //Database Reference
     private lateinit var databaseReference: DatabaseReference
+
+    //For push notification
+    private val channelID = "channelID"
+    private val channelName = "channelName"
+    private val notificationID = 0
 
     //ProgressDialog
     private lateinit var progressDialog: ProgressDialog
@@ -103,7 +110,8 @@ class CreateEventActivity : AppCompatActivity() {
 
         eventDetailEventType = intent.getStringExtra("EventDetailEventTypeSend").toString()
 
-        eventDetailPreRegister = intent.getStringExtra("EventDetailEventPreRegistrationSend").toString()
+        eventDetailPreRegister =
+            intent.getStringExtra("EventDetailEventPreRegistrationSend").toString()
 
 
         Log.d("receivedNameEvent", eventDetailEventName)
@@ -116,6 +124,10 @@ class CreateEventActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun bindActivity() {
+
+        //For push notification
+        createNotificationChannel()
+
         //configure ActionBar
         actionBar = supportActionBar!!
         actionBar.title = "Edit event"
@@ -182,6 +194,22 @@ class CreateEventActivity : AppCompatActivity() {
             selectImage()
         }
 
+    }
+
+    private fun createNotificationChannel() {
+        //check if app is running on oreo or later
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            val channel = NotificationChannel(channelID,
+                channelName,
+                NotificationManager.IMPORTANCE_HIGH).apply {
+                lightColor = Color.GREEN
+                enableLights(true)
+            }
+
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
     }
 
     private fun deleteData() {
@@ -350,6 +378,17 @@ class CreateEventActivity : AppCompatActivity() {
 
                 saveImageToFirebase(imageUri!!)
                 Toast.makeText(this, "saved event", Toast.LENGTH_SHORT).show()
+                val notification = NotificationCompat.Builder(this, channelID)
+                    .setContentTitle("Epi-Event")
+                    .setContentText("${eventName} event is here, check it out now.")
+                    .setSmallIcon(R.drawable.ic_menu_add)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .build()
+
+                val notificationManager = NotificationManagerCompat.from(this)
+
+
+                notificationManager.notify(notificationID, notification)
 
             }
             .addOnFailureListener { e ->

@@ -17,9 +17,10 @@
             android:background="@color/white"
             app:navigationIcon="@drawable/ic_sort_black_24dp" />
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_main" />
+    <include layout="@layout/content_main" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

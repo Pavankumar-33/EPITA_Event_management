@@ -1,6 +1,8 @@
 package com.example.epi_event
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -25,6 +28,7 @@ import com.example.epi_event.user_profile.UserProfile
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.util.*
 
 class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -63,6 +67,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     //Array List
     private lateinit var eventsArrayList: ArrayList<EventObject>
+    private lateinit var tempEventArrayList: ArrayList<EventObject>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,16 +84,22 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         bindActivity()
 
+//        setSupportActionBar(findViewById(R.id.app_bar_main_toolbar))
+
+
         //Check if user or admin
 
-            if (adminList.contains(userEmail)) {
-                navigationView.menu.clear()
-                navigationView.inflateMenu(R.menu.menu_sidebar_admin)
+        if (adminList.contains(userEmail)) {
+            navigationView.menu.clear()
+            navigationView.inflateMenu(R.menu.menu_sidebar_admin)
+//            menuInflater.inflate(R.menu.menu_sidebar_admin,menu)
 
-            } else {
-                navigationView.menu.clear()
-                navigationView.inflateMenu(R.menu.menu_sidebar_user)
-            }
+        } else {
+            navigationView.menu.clear()
+            navigationView.inflateMenu(R.menu.menu_sidebar_user)
+//            menuInflater.inflate(R.menu.menu_sidebar_user, menu)
+
+        }
 
     }
 
@@ -97,12 +108,6 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         adminList.add("gam3ame@gmail.com")
         adminList.add("anshulbrana@gmail.com")
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_sidebar_user, menu)
-        return true
     }
 
 
@@ -117,7 +122,8 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 //Navigation view
         val toolbar: Toolbar = findViewById(R.id.app_bar_main_toolbar)
-//        setSupportActionBar(toolbar)
+        setSupportActionBar(findViewById(R.id.app_bar_main_toolbar))
+
         navigationView = findViewById(R.id.nav_view)
 
         //Put color on navigation menu
@@ -153,6 +159,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         eventRecyclerView.hasFixedSize()
 
         eventsArrayList = arrayListOf<EventObject>()
+        tempEventArrayList = arrayListOf<EventObject>()
         getEventData()
 
 
@@ -171,6 +178,9 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                         val event = userSnapshot.getValue(EventObject::class.java)
                         eventsArrayList.add(event!!)
                     }
+
+                    tempEventArrayList.addAll(eventsArrayList)
+
                     // For on click response on recycler view
                     val onItemClickListener = View.OnClickListener {
                         val position: Int = it.tag as Int
@@ -194,8 +204,10 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
                     }
 
+
+
                     eventRecyclerView.adapter =
-                        EventRecyclerViewAdapter(eventsArrayList,
+                        EventRecyclerViewAdapter(tempEventArrayList,
                             this@ProfileActivity,
                             onItemClickListener)
 
@@ -292,22 +304,19 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         } else if (id == R.id.nav_user_sign_out) {
             //For signout
             signout()
-        }
-        else if (id == R.id.nav_user_change_password) {
+        } else if (id == R.id.nav_user_change_password) {
             //For changing password
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
-        }else if(id == R.id.nav_admin_change_password){
+        } else if (id == R.id.nav_admin_change_password) {
             //For changing password
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
-        }
-        else if (id == R.id.nav_admin_profile) {
+        } else if (id == R.id.nav_admin_profile) {
             //For user profile
             val intent = Intent(this, UserProfile::class.java)
             startActivity(intent)
-        }
-        else if (id == R.id.nav_admin_add_event) {
+        } else if (id == R.id.nav_admin_add_event) {
             //For adding event
             val intent = Intent(this, CreateEventActivity::class.java)
             startActivity(intent)
@@ -315,8 +324,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             //For opening scanner
             val intent = Intent(this, QrScan::class.java)
             startActivity(intent)
-        }
-        else if (id == R.id.nav_admin_sign_out) {
+        } else if (id == R.id.nav_admin_sign_out) {
             signout()
         }
 
@@ -333,6 +341,59 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.search_menu, menu)
+
+        val item = menu?.findItem(R.id.search_view)
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                tempEventArrayList.clear()
+                val searchText = newText!!.toLowerCase(Locale.getDefault())
+                if (searchText.isNotEmpty()) {
+                    eventsArrayList.forEach {
+                        if (it.eventName!!.toLowerCase(Locale.getDefault()).contains(searchText)) {
+                            tempEventArrayList.add(it)
+                        }
+                    }
+                    eventRecyclerView.adapter!!.notifyDataSetChanged()
+                } else {
+                    tempEventArrayList.clear()
+                    tempEventArrayList.addAll(eventsArrayList)
+                    eventRecyclerView.adapter!!.notifyDataSetChanged()
+
+
+                }
+                return false
+            }
+
+
+        })
+        return true
+    }
+
+    //Show dialogue box for exit
+
+    override fun onBackPressed() {
+        drawer = findViewById(R.id.drawer_layout)
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes,
+                    DialogInterface.OnClickListener { arg0, arg1 -> super@ProfileActivity.onBackPressed() })
+                .create().show()
+        }
     }
 
 
