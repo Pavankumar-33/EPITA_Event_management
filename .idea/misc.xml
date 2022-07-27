@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable-v24/circle_authentication_design_top_big.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/circle_authentication_design_top_small.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable-v24/icon_background.xml" value="0.186" />
         <entry key="app/src/main/res/drawable-v24/layout_bg_normal.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable-v24/layout_btn.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/layout_intrested.xml" value="0.186" />
@@ -20,13 +21,14 @@
         <entry key="app/src/main/res/drawable/flash_button_background.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_calender_background.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_copy.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/ic_event_detail_location_background.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_round_flash_off.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_sort_black_24dp.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/layout_bg.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.186" />
         <entry key="app/src/main/res/font/default_font.xml" value="0.2861111111111111" />
-        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.230987548828125" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.26972656250000004" />
         <entry key="app/src/main/res/layout/activity_create_event.xml" value="0.15559082031250002" />
         <entry key="app/src/main/res/layout/activity_event_detail.xml" value="0.3101104736328125" />
         <entry key="app/src/main/res/layout/activity_face_recognition.xml" value="0.28229166666666666" />
@@ -51,6 +53,8 @@
         <entry key="app/src/main/res/mipmap-anydpi-v26/epita_image_logo.xml" value="0.186" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_calender.xml" value="0.1545" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_calender_round.xml" value="0.1545" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_event_detail_location.xml" value="0.186" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_event_detail_location_round.xml" value="0.186" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1545" />
       </map>
     </option>

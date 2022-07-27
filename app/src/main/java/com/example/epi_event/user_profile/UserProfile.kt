@@ -3,6 +3,7 @@ package com.example.epi_event.user_profile
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.epi_event.R
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +23,9 @@ class UserProfile : AppCompatActivity() {
     private lateinit var tvUserEmail: TextView
     private lateinit var tvUserEpitaEmail: TextView
 
+    //ActionBar
+    private lateinit var actionBar: ActionBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,17 @@ class UserProfile : AppCompatActivity() {
     }
 
     private fun bindActivity() {
+
+        //configure ActionBar
+        actionBar = supportActionBar!!
+        actionBar.title = "User Profile"
+
+
+        //Enable back button
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
+
+
         tvUserName = findViewById(R.id.activity_user_profile_user_name)
         tvUserEmail = findViewById(R.id.activity_user_profile_user_email)
         tvUserEpitaEmail = findViewById(R.id.activity_user_profile_user_epita_email)
@@ -69,5 +84,10 @@ class UserProfile : AppCompatActivity() {
 
         })
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

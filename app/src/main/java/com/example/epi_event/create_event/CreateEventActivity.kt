@@ -116,11 +116,14 @@ class CreateEventActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun bindActivity() {
-//        actionBar = supportActionBar!!
-//        actionBar.title = "Create Event"
+        //configure ActionBar
+        actionBar = supportActionBar!!
+        actionBar.title = "Edit event"
 
-        //get switch id
-//        switchPreRegister = binding.activityCreateEventSwitchPreRegister
+
+        //Enable back button
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
 
         //Configure progress dialog
         progressDialog = ProgressDialog(this)
@@ -454,5 +457,10 @@ class CreateEventActivity : AppCompatActivity() {
 
         datePickerDialog.show()
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

@@ -21,6 +21,7 @@ import com.example.epi_event.authentication_login_signup.ChangePasswordActivity
 import com.example.epi_event.authentication_login_signup.LoginActivity
 import com.example.epi_event.create_event.CreateEventActivity
 import com.example.epi_event.qr_code.QrScan
+import com.example.epi_event.user_profile.UserProfile
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -35,7 +36,6 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     private lateinit var tvEmailResend: TextView
     private lateinit var tvEmail: TextView
     private lateinit var getUserEmail: String
-    private lateinit var displayUserName: TextView
 
     //Admin lists
     private var adminList: MutableList<String> = mutableListOf()
@@ -287,7 +287,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         if (id == R.id.nav_user_profile) {
             //For user profile
-            val intent = Intent(this, ProfileActivity::class.java)
+            val intent = Intent(this, UserProfile::class.java)
             startActivity(intent)
         } else if (id == R.id.nav_user_sign_out) {
             //For signout
@@ -304,7 +304,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
         else if (id == R.id.nav_admin_profile) {
             //For user profile
-            val intent = Intent(this, ProfileActivity::class.java)
+            val intent = Intent(this, UserProfile::class.java)
             startActivity(intent)
         }
         else if (id == R.id.nav_admin_add_event) {

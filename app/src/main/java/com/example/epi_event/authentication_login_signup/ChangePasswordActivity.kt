@@ -1,16 +1,12 @@
 package com.example.epi_event.authentication_login_signup
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import android.util.Patterns
 import android.widget.Toast
-import com.example.epi_event.R
+import androidx.appcompat.app.ActionBar
 import com.example.epi_event.databinding.ActivityChangePasswordBinding
-import com.example.epi_event.databinding.ActivityLoginBinding
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,6 +22,9 @@ class ChangePasswordActivity : AppCompatActivity() {
     private var newPassword = ""
     private var reNewPassword = ""
 
+    //ActionBar
+    private lateinit var actionBar: ActionBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChangePasswordBinding.inflate(layoutInflater)
@@ -35,6 +34,16 @@ class ChangePasswordActivity : AppCompatActivity() {
     }
 
     private fun bindActivity() {
+
+        //configure ActionBar
+        actionBar = supportActionBar!!
+        actionBar.title = "Change Password"
+
+
+        //Enable back button
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
+
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth.currentUser!!
 
@@ -123,5 +132,10 @@ class ChangePasswordActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error ${e.message}", Toast.LENGTH_SHORT).show()
 
             }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

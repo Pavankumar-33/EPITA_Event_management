@@ -5,7 +5,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#00000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="grey">#6A6767</color>
@@ -14,7 +14,7 @@
     <color name="txtBackgroundDescription">#E7EDF7</color>
     <color name="epi_event_color_title">#6B11C5</color>
     <color name="epi_event_color_text">#000000</color>
-    <color name="epi_event_color_signup_box">#BCCBF1</color>
+    <color name="epi_event_color_signup_box">#E9EEFA</color>
     <color name="epi_event_color_item_background">#ECEEF3</color>
 
     <color name="authentication_background">#f8f9fd</color>

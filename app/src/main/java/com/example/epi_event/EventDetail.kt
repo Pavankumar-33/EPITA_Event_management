@@ -418,4 +418,9 @@ class EventDetail : AppCompatActivity() {
             .joinToString("")
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
 }

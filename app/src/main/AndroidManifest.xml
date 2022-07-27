@@ -16,7 +16,8 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EpiEvent">
+        android:theme="@style/Theme.EpiEvent"
+        android:hardwareAccelerated="true">
 
         <activity
             android:name=".qr_code.QrScan"
@@ -29,6 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".authentication_login_signup.ChangePasswordActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:exported="false" />
         <activity
             android:name=".EventDetail"
