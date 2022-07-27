@@ -5,12 +5,6 @@
     tools:override="true"
     tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/nav_search"
-        android:icon="@mipmap/ic_sign_out_foreground"
-        android:title="search"
-        app:showAsAction="always|collapseActionView"/>
-
         <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_user_profile"

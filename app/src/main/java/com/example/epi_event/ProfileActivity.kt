@@ -126,6 +126,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         navigationView = findViewById(R.id.nav_view)
 
+
         //Put color on navigation menu
         navigationView.setItemIconTintList(null);
 
@@ -146,6 +147,12 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
+
+        //put email on header
+
+        var headerView: View = navigationView.getHeaderView(0)
+        var navUserName: TextView = headerView.findViewById(R.id.userNameDisplay)
+        navUserName.setText(getUserEmail)
 
 
         //For email verification

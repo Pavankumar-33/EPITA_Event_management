@@ -22,13 +22,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/item_margin"
         android:text="User"
-        android:textSize="18dp"/>
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ticketking@gmail.com"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </LinearLayout>
