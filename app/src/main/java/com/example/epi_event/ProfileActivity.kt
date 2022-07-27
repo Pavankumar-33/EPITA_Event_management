@@ -292,11 +292,22 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         } else if (id == R.id.nav_user_sign_out) {
             //For signout
             signout()
-        } else if (id == R.id.nav_user_change_password) {
+        }
+        else if (id == R.id.nav_user_change_password) {
             //For changing password
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
-        } else if (id == R.id.nav_admin_add_event) {
+        }else if(id == R.id.nav_admin_change_password){
+            //For changing password
+            val intent = Intent(this, ChangePasswordActivity::class.java)
+            startActivity(intent)
+        }
+        else if (id == R.id.nav_admin_profile) {
+            //For user profile
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        else if (id == R.id.nav_admin_add_event) {
             //For adding event
             val intent = Intent(this, CreateEventActivity::class.java)
             startActivity(intent)
@@ -304,6 +315,9 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             //For opening scanner
             val intent = Intent(this, QrScan::class.java)
             startActivity(intent)
+        }
+        else if (id == R.id.nav_admin_sign_out) {
+            signout()
         }
 
         val drawer: DrawerLayout = findViewById(R.id.drawer_layout)

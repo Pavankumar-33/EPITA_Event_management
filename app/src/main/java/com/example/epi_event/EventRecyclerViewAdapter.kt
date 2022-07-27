@@ -1,19 +1,17 @@
 package com.example.epi_event
 
 import android.app.Activity
-import android.graphics.BitmapFactory
+import android.graphics.*
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.epi_event.databinding.ActivitySignUpBinding
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+
 
 class EventRecyclerViewAdapter(
     val data: MutableList<EventObject>,
@@ -29,6 +27,7 @@ class EventRecyclerViewAdapter(
             itemView.findViewById(R.id.event_item_tv_event_registration)
         val tvEventTime: TextView = itemView.findViewById(R.id.event_item_tv_event_time)
         val tvEventDate: TextView = itemView.findViewById(R.id.event_item_tv_event_date)
+        val tvEventLocation: TextView = itemView.findViewById(R.id.event_item_tv_event_location)
 
     }
 
@@ -53,6 +52,7 @@ class EventRecyclerViewAdapter(
         holder.tvEventTime.text = event.eventTime
         holder.tvEventDate.text = event.eventDate
         holder.itemView.tag = position
+        holder.tvEventLocation.text = event.eventLocation
 
         val refStorage =
             FirebaseStorage.getInstance("gs://epita-event-signup.appspot.com")
@@ -61,7 +61,21 @@ class EventRecyclerViewAdapter(
 
         refStorage.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-            holder.ivImage.setImageBitmap(bitmap)
+            val imageRounded =
+                Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig())
+
+//            holder.ivImage.setImageBitmap(bitmap)
+            val canvas = Canvas(imageRounded)
+            val mpaint = Paint()
+            mpaint.setAntiAlias(true)
+            mpaint.setShader(BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP))
+            canvas.drawRoundRect(RectF(0F, 0F, bitmap.getWidth().toFloat(),
+                bitmap.getHeight().toFloat()),
+                400F,
+                400F,
+                mpaint) // Round Image Corner 100 100 100 100
+
+            holder.ivImage.setImageBitmap(imageRounded)
 
 
         }

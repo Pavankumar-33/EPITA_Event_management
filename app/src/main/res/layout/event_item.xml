@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/item_margin"
-    app:cardBackgroundColor="@color/epi_event_color_item_background"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginLeft="@dimen/item_margin"
         android:layout_marginTop="@dimen/item_margin"
-        android:layout_marginRight="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/item_margin"
         android:layout_marginBottom="@dimen/item_margin"
         android:orientation="vertical">
 
@@ -28,13 +28,14 @@
                 <ImageView
                     android:id="@+id/event_item_iv_image"
                     android:layout_width="142dp"
-                    android:layout_height="98dp"
-                    android:scaleType="fitXY"/>
+                    android:layout_height="108dp"
+                    android:scaleType="fitXY" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/item_margin"
                 android:orientation="vertical">
 
                 <TextView
@@ -46,13 +47,35 @@
                     android:textSize="@dimen/text_item_topic"
                     android:textStyle="bold" />
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/event_item_tv_event_organiser"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:text="Event organiser"-->
-                <!--                    android:textColor="@color/black"-->
-                <!--                    android:textSize="@dimen/text_item_detail" />-->
+                <TextView
+
+                    android:id="@+id/event_item_tv_event_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event Location"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_item_detail"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/event_item_tv_event_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event date"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_item_detail"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/event_item_tv_event_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_item_detail"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -72,29 +95,11 @@
                         android:layout_height="wrap_content"
                         android:text="Event registration"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_item_detail" />
-
+                        android:textSize="@dimen/text_item_detail"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
-
-                <TextView
-
-                    android:id="@+id/event_item_tv_event_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Event date"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_item_detail" />
-
-                <TextView
-
-                    android:id="@+id/event_item_tv_event_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Event time"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_item_detail" />
 
             </LinearLayout>
 

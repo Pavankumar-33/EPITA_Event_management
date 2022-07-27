@@ -5,4 +5,6 @@ data class EventObject(
     val eventPreRegister: String? = null,
     val eventDate: String? = null,
     val eventTime: String? = null,
-)
+    val eventLocation: String? = null,
+
+    )
