@@ -126,13 +126,14 @@ class EventDetail : AppCompatActivity() {
 
                 tvInterestedNumber.setText(interestKeyArray.size.toString())
 
+//                tvInterestedNumber.setText(interestKeyArray.size.toString())
+
 
                 //Check if interested is already selected
 
                 if (interestKeyArray.contains(currentUserId)) {
 //                    flag = true
 //                    ivStar.setBackgroundResource(R.mipmap.ic_star_glow_foreground);
-//                    Thread.sleep(5000)
                     ivStar.setImageResource(R.mipmap.ic_star_glow_foreground);
                     ivStar.setTag("notinterested");
 
@@ -186,7 +187,10 @@ class EventDetail : AppCompatActivity() {
         Log.d("randomCode", randomString)
 
         getEventDetails()
-        getImage()
+
+        //Get Image
+
+//        getImage()
 
         ivStar.setOnClickListener {
 //            if (!flag) {
@@ -210,18 +214,10 @@ class EventDetail : AppCompatActivity() {
                 ivStar.setImageResource(R.mipmap.ic_star_glow_foreground);
                 ivStar.setTag("notinterested");
                 sendInterestData()
-//                finish();
-//                overridePendingTransition( 0, 0);
-//                startActivity(getIntent());
-//                overridePendingTransition( 0, 0);
             } else {
                 ivStar.setImageResource(R.mipmap.ic_star_not_glow_foreground);
                 ivStar.setTag("interested")
                 deleteInterestData()
-//                finish();
-//                overridePendingTransition( 0, 0);
-//                startActivity(getIntent());
-//                overridePendingTransition( 0, 0);
             }
         }
 
@@ -373,7 +369,7 @@ class EventDetail : AppCompatActivity() {
                                     "Event date:$eventDate\n" +
                                     "Event time:$eventTime\n" +
                                     "Event organiser:$eventOrganiser\n" +
-                                    "Registered user email:$userEmail\n" +
+                                    "Registered email:$userEmail\n" +
                                     "Registration number:$randomString",
                                 BarcodeFormat.QR_CODE,
                                 512,

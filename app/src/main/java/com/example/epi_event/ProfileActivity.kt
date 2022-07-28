@@ -89,14 +89,19 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         //Check if user or admin
 
+        //For admin
+
         if (adminList.contains(userEmail)) {
             navigationView.menu.clear()
             navigationView.inflateMenu(R.menu.menu_sidebar_admin)
 //            menuInflater.inflate(R.menu.menu_sidebar_admin,menu)
 
-        } else {
+        }
+        //For user
+
+        else {
             navigationView.menu.clear()
-            navigationView.inflateMenu(R.menu.menu_sidebar_admin)
+            navigationView.inflateMenu(R.menu.menu_sidebar_user)
 //            menuInflater.inflate(R.menu.menu_sidebar_user, menu)
 
         }
@@ -191,7 +196,7 @@ class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                     // For on click response on recycler view
                     val onItemClickListener = View.OnClickListener {
                         val position: Int = it.tag as Int
-                        val clickedEvent = eventsArrayList[position]
+                        val clickedEvent = tempEventArrayList[position]
                         val eventNameClicked = clickedEvent.eventName
 
                         Toast.makeText(this@ProfileActivity, "" + eventNameClicked,

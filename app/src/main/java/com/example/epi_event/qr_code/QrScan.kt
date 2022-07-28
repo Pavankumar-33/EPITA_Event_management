@@ -25,15 +25,7 @@ import java.util.concurrent.Executors
 
 
 class QrScan : AppCompatActivity() {
-//    companion object {
-//        @JvmStatic
-//        fun start(context: Context, scannerSDK: ScannerSDK) {
-//            val starter = Intent(context, ActivityQrScanBinding::class.java).apply {
-//                putExtra(ARG_SCANNING_SDK, scannerSDK)
-//            }
-//            context.startActivity(starter)
-//        }
-//    }
+
 private val ARG_SCANNING_SDK: String = "scanning_SDK"
 
 

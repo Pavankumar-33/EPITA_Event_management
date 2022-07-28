@@ -17,7 +17,7 @@ class EventRecyclerViewAdapter(
     var data: MutableList<EventObject>,
     val context: Activity,
     val onItemClickListener: View.OnClickListener,
-    ) :
+) :
     RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -54,6 +54,18 @@ class EventRecyclerViewAdapter(
         holder.itemView.tag = position
         holder.tvEventLocation.text = event.eventLocation
 
+        //Get Image
+
+//        getImage(event, holder, position)
+
+    }
+
+    override fun getItemCount(): Int {
+        return data.size
+        Log.d("Size", "" + data.size)
+    }
+
+    private fun getImage(event: EventObject, holder: ViewHolder, position: Int) {
         val refStorage =
             FirebaseStorage.getInstance("gs://epita-event-signup.appspot.com")
                 .reference.child("event-image/${event.eventName}")
@@ -79,13 +91,6 @@ class EventRecyclerViewAdapter(
 
 
         }
-
-    }
-
-
-    override fun getItemCount(): Int {
-        return data.size
-        Log.d("Size", "" + data.size)
     }
 
 }
